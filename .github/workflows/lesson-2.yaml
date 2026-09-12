@@ -35,7 +35,7 @@ jobs:
           pip install pytest django_mock_queries six coverage
         working-directory:
           backend
-            - name: Run unit tests
+      - name: Run unit tests
         run: |
           coverage run -m --source=./hangry_api pytest
           coverage report
