@@ -78,51 +78,51 @@ The front end was originally created using [Create React App](https://create-rea
 
 5.  Run the server
 
-          manage.py runserver
+          manage.py runserver 8001
 
     > **Note:** If the current working directory isn't included in your OS's PATH environment variable, you'll need to prepend it to the command like so:
 
     Windows:
 
-        .\manage.py runserver
+        .\manage.py runserver 8001
 
     macOS/Linux:
 
-        ./manage.py runserver
+        ./manage.py runserver 8001
 
     > **Note:** If you're running Python 3.13 or higher you'll get `ModuleNotFoundError: No module named 'cgi'`. Use `pip install legacy-cgi` to install a community-based version of the `cgi` module. That should get you up and running.
 
 7.  Verify the server is running by accessing the following API's.
 
-    - http://127.0.0.1:8000/api/food/
+    - http://127.0.0.1:8001/api/food/
 
       ![Food API](./readme-images/food-api.jpg)
 
-    - http://127.0.0.1:8000/api/food/1
+    - http://127.0.0.1:8001/api/food/1
 
       ![Food Item Details API](./readme-images/food-detail-api.jpeg)
 
-    - http://127.0.0.1:8000/api/category/
+    - http://127.0.0.1:8001/api/category/
 
       ![Food Categories Details API](./readme-images/category-api.jpeg)
 
-    - http://127.0.0.1:8000/api/category/1
+    - http://127.0.0.1:8001/api/category/1
 
       ![Food Category Details API](./readme-images/category-details-api.jpeg)
 
-    - http://127.0.0.1:8000/api/order/
+    - http://127.0.0.1:8001/api/order/
 
       ![Orders API](./readme-images/order-api.jpeg)
 
-    - http://127.0.0.1:8000/api/order/Hippo
+    - http://127.0.0.1:8001/api/order/Hippo
 
       ![Order Details API](./readme-images/order-details-api.jpeg)
 
-    - http://127.0.0.1:8000/api/delivery/Hippo/4
+    - http://127.0.0.1:8001/api/delivery/Hippo/4
 
       ![Delivery Fee API](./readme-images/delivery-fee-api.jpeg)
 
-    - http://127.0.0.1:8000/api/subtotal/Hippo
+    - http://127.0.0.1:8001/api/subtotal/Hippo
 
       ![Subtotal API](./readme-images/subtotal-api.jpeg)
 
@@ -207,7 +207,7 @@ The front end was originally created using [Create React App](https://create-rea
 
     with this line:
 
-        export const API_URL = 'http://localhost:8000';
+        export const API_URL = 'http://localhost:8001';
 
 ## Running Front End Functional Tests
 
