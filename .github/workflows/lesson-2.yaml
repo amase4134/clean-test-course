@@ -3,39 +3,53 @@ name: Lesson 2
 on:
   push:
     branches:
-      - lesson-2
+      - lesson-2-complete
 jobs:
-  unit-tests:
-      runs-on: ubuntu-latest
-      defaults:
-        run:
-          working-directory: backend
-      steps:
-        - uses: actions/checkout@v7.0.1
-        - name: Set up Python 3.10
-          uses: actions/setup-python@v7
-          with:
-            python-version: '3.10'
-        - name: Install depenedencies
-          run: |
-            python -m pip install --upgrade pip
-            pip install pytest django_mock_queries six coverage
-        - name: Unit Tests
-          run: |
-            coverage run -m --source=./hangry_api pytest
-            coverage report
-      deploy:
-        needs: [unit_tests]
-        runs-on: ubuntu-latest
-        defaults:
-          run:
-            working-directory: backend
-        steps:
-          - uses: actions/checkout@v7.0.1
-          - name: Disable Debug
-            run: |
-              sed -i 's/DEBUG = True/DEBUG = False/g' hangry_api/hangry_api/settings.py
-          - name: Generate deployment package
-            run: zip -r deploy.zip . -x '*.git*'
-          - name: '**PLACEHOLDER** Deploy to Elastic Beanstalk'
-            run: echo Placeholder for Deployment
+  unit_test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest django_mock_queries six coverage
+      - name: Unit Tests
+        run: |
+          coverage run -m --source=./hangry_api pytest
+          coverage report
+  deploy:
+    needs: [unit_test]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Disable Debug
+        run: |
+          sed -i 's/DEBUG = True/DEBUG = False/g' hangry_api/hangry_api/settings.py
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+      - name: '**PLACEHOLDER** Deploy to Elastic Beanstalk'
+        run: echo Placeholder for Deployment
+    needs: [unit_test]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Disable Debug
+        run: |
+          sed -i 's/DEBUG = True/DEBUG = False/g' hangry_api/hangry_api/settings.py
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+      - name: '**PLACEHOLDER** Deploy to Elastic Beanstalk'
+        run: echo Placeholder for Deployment
