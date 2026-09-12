@@ -6,6 +6,7 @@ on:
       - lesson-2
 jobs:
   deploy:
+    needs: [unit_tests]
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -20,7 +21,6 @@ jobs:
       - name: '**PLACEHOLDER** Deploy to Elastic Beanstalk'
         run: echo Placeholder for Deployment
   unit-tests:
-    needs: [unit_tests]
     runs-on: ubuntu-latest
     defaults:
       run:
