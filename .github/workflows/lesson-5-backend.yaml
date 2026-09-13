@@ -35,7 +35,7 @@ jobs:
         run: |
           coverage run -m --source=./hangry_api pytest
           coverage report
-  deploy:
+    deploy:
     needs: [unit_test]
     runs-on: ubuntu-latest
     defaults:
