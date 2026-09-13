@@ -18,7 +18,7 @@ jobs:
             sed -i 's/DEBUG = True/DEBUG = False/g' \
             hangry_api/hangry_api/settings.py
         - name: Run pycharm security test
-          usees: tonybaloney/pycharm-security@1.25.1
+          uses: tonybaloney/pycharm-security@1.25.1
           with:
             fail_on_warning: 'yes'
     unit_test:
