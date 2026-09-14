@@ -22,3 +22,20 @@ def test_ComplexCost():
   cost = Subtotal.calculate(order)
   #Assert
   assert cost == 11.5
+
+def test_EmptyOrder():
+  #Arrange
+  order = MockSet()
+  #Act
+  cost = Subtotal.calculate(order)
+  #Assert
+  assert cost == 0
+
+def test_SingleItem():
+  #Arrange
+  order = MockSet()
+  order.add(MockModel(quantity=3, item=MockModel(price=4.25)))
+  #Act
+  cost = Subtotal.calculate(order)
+  #Assert
+  assert cost == 12.75
